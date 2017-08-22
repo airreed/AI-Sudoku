@@ -4,10 +4,26 @@
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
 A: *Student should provide answer here*
+The constraint here is that if two boxes with only two letters left in the same unit has the same value, 
+all other boxes in the same unit cannot have these two numbers as candidate. If we apply this constraint 
+to the sudoku board, we could reduce the candidates for other boxes. 
+To find twins in the board, just simply loop through all the units, find the two boxes that have two and 
+only two candidates left and have same value as each other. Then for all other boxes in the same unit, 
+remove these two numbers from candidates.
+Do so until there is no more naked twins on the board.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
 A: *Student should provide answer here*
+Other than all the constraints mentioned in the course, I also applied one more constraint: hidden twins, which I got 
+the idea of from this reference as "Hidden Twin exclusion rule":
+http://www.sudokudragon.com/sudokustrategy.htm
+Hidden-twins constraint is that basically find two boxes in a unit where two digits both and only are these two boxes' 
+candidates. Then assign only the two digits as the two boxes' only candidates.
+The constraints I applied here are elimination, only choice,naked twins and hidden twins. Loop through the board, find
+candidates that could be eliminated by using these three constrains, until the board doesn't change any more.
+That is the constraint propagation. And if the board is left unsolved, then use search to try out the candidate
+until found a solution.
 
 ### Install
 
